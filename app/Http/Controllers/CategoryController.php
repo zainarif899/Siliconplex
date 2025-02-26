@@ -21,8 +21,7 @@ class CategoryController extends Controller
     }
     
     public function store(CategoryRequest $request){
-        $validation = $request->validate();
-        $validation = $request->safe()->only(['cat_name']);
+         $validation = $request->validated();
         $category = Category::create($request->all());
         return redirect(route('category-show',$category->id));
     }

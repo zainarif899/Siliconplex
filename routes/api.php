@@ -29,4 +29,4 @@ Route::put('update-record',[StudentController::class,'update']);
 Route::delete('reocrd-deleted/{id}',[StudentController::class,'delete']);
 Route::get('serach-reocord/{std_name}',[StudentController::class,'search']);
 
-// Route::post('sign-up',[UserController::class,'signup']);
+Route::post('sign-up',[UserController::class,'signup'])->name('sign-up');

@@ -37,9 +37,6 @@
     <th>Category id</th>
   </tr>
   <tr>
-
-        
-  
     <td>{{$product->id}}</td>
     <td>{{$product->name}}</td>
     <td>{{$product->cat_id}}</td>

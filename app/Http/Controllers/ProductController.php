@@ -9,11 +9,8 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-    public function index(ProductRequest $request){
-        $validation = $request->validated();
-        $validation = $request->safe()->only(['name','cat_id']);
+    public function index(Request $request){
         $product = Product::with('category')->get();
-        // dd($product);
         return view('product.index',compact('product'));  
     }
 
@@ -25,14 +22,23 @@ class ProductController extends Controller
     
     public function show($id){
         $product = Product::findOrfail($id);
+        // $products = Product::with('category')->get();
         return view('product.show',compact('product'));
     }
 
     public function store(ProductRequest $request){
+        $validation = $request->validate();
         $product = Product::create([
             'name'=>$request->name,
             'cat_id'=>$request->cat_id,
         ]);
         return view('product.show',compact('product'));
     }
+
+    public function productpage(){
+        $product = Product::with('category')->get();
+        return view('product.productpage',compact('product'));
+    }
+
+
 }
