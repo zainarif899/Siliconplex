@@ -89,7 +89,7 @@ a {
   </div>
   
   <div class="container signin">
-    <p>Already have an account? <a href="#">Sign up</a>.</p>
+    <p>Already have an account? <a href="{{route('register-page')}}">Sign up</a>.</p>
   </div>
 </form>
 

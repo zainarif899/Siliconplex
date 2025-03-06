@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -8,29 +10,13 @@ use Illuminate\Http\Request;
 class StudentController extends Controller
 {
     //Add student record in Validation also working//
-    function create(Request $request){
-        $rules = array(
-            'name'=>'required|min:2|max:10',
-            'email'=>'email|required',
-            'number'=>'required',
-            'father'=>'required|min:2|max:10'
-        );
-        $validation = Validator::make($request->all(),$rules);
-        if($validation->fails()){
-            return $validation->errors();
-        }else{
-            $student = new Student();
-        $student->name=$request->name;
-        $student->email=$request->email;
-        $student->number=$request->number;
-        $student->father=$request->father;
-        if($student->save()){
-            return "Student added successfull";
-        }else{
-            return "Student does not added ";
-        }
-
+    function create(StudentRequest $request){
+        $validation = $request->validated();
+        $student = Student::create($request->all());
+        if($student){
+          return ['success'=>true,'result'=>$student,'msg'=>"Student Record successfull"];
     }
+    
 }
     //student record alos working //
     function update(Request $request){

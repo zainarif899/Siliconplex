@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Extension;
 use App\Http\Requests\ExtensionRequest;
-use App\Http\Requests\RatingRequest;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 
@@ -34,24 +33,11 @@ class ExtensionController extends Controller
     }
 
     public function show_all_extensions($id){
-        $show = Extension::findOrfail($id);
-        return view('product.productpage',compact('show'));
+        $shows = Extension::findOrfail($id);
+        // dd($shows);
+        return view('Extension.extensionpage',compact('shows'));
     }
 
-    public function rating_create(RatingRequest $request){
-        $validation = $request->validated();
-        $rat = Rating::create([
-            'review'=>$request->review,
-            'rating'=>$request->rating
-        ]);
-        if($rat){
-            return view('product.rating');
-        }else{
-        return ['success'=>false,'result'=>$rat,'msg'=>"Rating not Add successfull"];
-    }
-    }
-    public function rating_page(){
-        return view('product.rating');
-    }
+  
 
 }

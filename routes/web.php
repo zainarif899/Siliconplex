@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ExtensionController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,8 @@ Route::get('/', function () {
 Route::get('register/page',[UserController::class,'register'])->name('register-page');
 Route::get('login/page',[UserController::class,'login'])->name('login-page');
 Route::post('logins/page',[UserController::class,'logins'])->name('logins');
+Route::get('logout',[UserController::class,'logout'])->name('logout');
+Route::get('home',[UserController::class,'home'])->name('home');
 
 
 Route::get('service',[ServiceController::class,'index'])->name('service-index');
@@ -49,6 +52,6 @@ Route::get('product/page',[ProductController::class,'productpage'])->name('produ
 Route::get('extension',[ExtensionController::class,'index'])->name('extension-index');
 Route::get('extension/create',[ExtensionController::class,'create'])->name('extension-create');
 Route::post('extension/create',[ExtensionController::class,'store'])->name('extension-store');
-Route::get('extension/page/{id}',[ExtensionController::class,'show_all_extensions'])->name('extension-page');
-Route::get('rating/page',[ExtensionController::class,'rating_page'])->name('rating-page');
-Route::post('rating/store',[ExtensionController::class,'rating_create'])->name('rating-store');
+Route::get('extension/page/{id}',[ExtensionController::class,'show_all_extensions']);
+Route::get('rating/page',[RatingController::class,'rating_page'])->name('rating-page');
+Route::post('rating/store',[RatingController::class,'rating_create'])->name('rating-store');
