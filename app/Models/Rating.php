@@ -15,16 +15,18 @@ class Rating extends Model
 
     protected $fillable = [
         'user_id',
-        'pro_id',
+        'ext_id',
         'rating',
         'review'
     ];
 
-    public function product(){
-        return $this->belongsTo(Extension::class,'pro_id','id');
-     }
+    public function extension()
+    {
+        return $this->belongsTo(Extension::class, 'ext_id', 'id');
+    }
 
-     public function user(){
-        return $this->belongsTo(User::class,'user_id','id');
-     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

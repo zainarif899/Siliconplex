@@ -18,8 +18,8 @@ class Extension extends Model
         'image'
     ];
 
-    public function rating_product(){
-        
-        return $this->hasMany(Rating::class,'pro_id','id');
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'ext_id', 'id');
     }
 }
