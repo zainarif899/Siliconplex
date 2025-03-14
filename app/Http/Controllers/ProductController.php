@@ -35,10 +35,10 @@ class ProductController extends Controller
         return view('product.show',compact('product'));
     }
 
-    public function productpage(){
-        $product = Product::with('category')->get();
-        return view('product.productpage',compact('product'));
-    }
+    // public function productpage(){
+    //     $product = Product::with('category')->get();
+    //     return view('product.productpage',compact('product'));
+    // }
 
 
 }

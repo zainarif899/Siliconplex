@@ -33,10 +33,18 @@ class ExtensionController extends Controller
     }
 
     public function show_all_extensions($id){
-        $shows = Extension::findOrfail($id);
-        // dd($shows);
-        return view('Extension.extensionpage',compact('shows'));
+        $shows = Extension::findOrFail($id);
+        $reviews = Rating::where('ext_id', $id)->get();
+        return view('Extension.extensionpage', compact('shows', 'reviews'));
     }
+    
+
+    // public function review_show($id){
+    //     $review = Rating::where('ext_id', $id)->get(); 
+    //     $shows = Extension::findOrFail($id);
+    //     return view('Extension.extensionpage', compact('review', 'shows'));
+    // }
+    
 
   
 

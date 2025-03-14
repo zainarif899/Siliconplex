@@ -89,7 +89,7 @@ body {
       <a href="{{route('service-index')}}">Service</a>
       <a href="{{route('product-index')}}">product</a>
       <a href="{{route('category-index')}}">Category</a>
-      <a href="{{route('rating-page')}}">rating</a>
+      {{-- <a href="{{route('rating-pages')}}">rating</a> --}}
     
       <a href="{{route('logout')}}" class="right">logout</a>
     </div>

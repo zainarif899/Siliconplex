@@ -119,7 +119,7 @@
                 @csrf
                 <p class="font-weight-bold ">Review</p>
                 <div class="form-group row">
-                    <input type="hidden" name="ext_id" value="">
+                    <input type="hidden" name="ext_id" value={{$id}}>
                     <div class="col">
                         <div class="rate">
                             <input type="radio" id="star5" class="rate" name="rating" value="5" />

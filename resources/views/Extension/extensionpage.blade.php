@@ -141,26 +141,37 @@
             </div>
             <button class="buy-now">Buy Now</button>
         </div>
-        <div class="">
-            <a href="{{route('rating-page')}}">Review</a>
+        <div class="#">
+            <a href="{{route('rating-pages', $shows->id)}}">Review</a>
         </div>
     </div>
+   
+        
     <div class="reviews">
         <h2>Reviews</h2>
-        <div class="review">
-            <h3>Review 1</h3>
-            <p>This product is amazing! I love it.</p>
-            <div class="rating">
-                <h4>Rating: 5/5</h4>
-            </div>
-        </div>
-        <div class="review">
+        @if($reviews->count() > 0)
+            @foreach($reviews as $review)
+                <div class="review">
+                    <h3>{{ $review->id }}</h3>
+                    <p>{{ $review->review }}</p>
+                    <div class="rating">
+                        <h4>Rating: {{ $review->rating }}/5</h4>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <p>No reviews yet.</p>
+        @endif
+    </div>
+    
+     
+        {{-- <div class="review">
             <h3>Review 2</h3>
             <p>This product is okay. It's not that great.</p>
             <div class="rating">
                 <h4>Rating: 3/5</h4>
             </div>
-        </div>
+        </div> --}}
     </div>
 </body>
 

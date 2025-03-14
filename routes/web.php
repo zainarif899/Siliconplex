@@ -47,11 +47,14 @@ Route::get('product',[ProductController::class,'index'])->name('product-index');
 Route::get('product/create',[ProductController::class,'create'])->name('product-create');
 Route::post('product/create',[ProductController::class,'store'])->name('product-store');
 Route::get('product/show/{id}',[ProductController::class,'show'])->name('product-show');
-Route::get('product/page',[ProductController::class,'productpage'])->name('product-page');
+// Route::get('product/page',[ProductController::class,'productpage'])->name('product-page');
 
 Route::get('extension',[ExtensionController::class,'index'])->name('extension-index');
 Route::get('extension/create',[ExtensionController::class,'create'])->name('extension-create');
 Route::post('extension/create',[ExtensionController::class,'store'])->name('extension-store');
 Route::get('extension/page/{id}',[ExtensionController::class,'show_all_extensions']);
-Route::get('rating/page',[RatingController::class,'rating_page'])->name('rating-page');
+// Route::get('review/show',[ExtensionController::class,'review_show'])->name('review-show');
+
+
+Route::get('rating/pages/{id}',[RatingController::class,'rating_page'])->name('rating-pages');
 Route::post('rating/store',[RatingController::class,'rating_create'])->name('rating-store');
