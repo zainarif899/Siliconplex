@@ -24,7 +24,8 @@ class ExtensionRequest extends FormRequest
         return [
             'name'=>'required',
             'description'=>'required',
-            'image'=>'required|mimes:jpeg,png,jpg|max:4096'
+            'image'=>'required|mimes:jpeg,png,jpg|max:4096',
+            'price'=>'required'
         ];
     }
 }

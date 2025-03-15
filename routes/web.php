@@ -49,10 +49,15 @@ Route::post('product/create',[ProductController::class,'store'])->name('product-
 Route::get('product/show/{id}',[ProductController::class,'show'])->name('product-show');
 // Route::get('product/page',[ProductController::class,'productpage'])->name('product-page');
 
+
+
 Route::get('extension',[ExtensionController::class,'index'])->name('extension-index');
 Route::get('extension/create',[ExtensionController::class,'create'])->name('extension-create');
 Route::post('extension/create',[ExtensionController::class,'store'])->name('extension-store');
-Route::get('extension/page/{id}',[ExtensionController::class,'show_all_extensions']);
+Route::get('extension/page/{id}',[ExtensionController::class,'show_all_extensions'])->name('extension-show');
+Route::get('extension/edit/{id}',[ExtensionController::class,'Extension_edit'])->name('extension-edit');
+Route::post('update/extension/{id}',[ExtensionController::class,'update'])->name('update-extension');
+Route::get('extension/delete/{id}',[ExtensionController::class,'delete'])->name('extension-delete');
 // Route::get('review/show',[ExtensionController::class,'review_show'])->name('review-show');
 
 

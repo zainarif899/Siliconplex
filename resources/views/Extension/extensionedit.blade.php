@@ -73,14 +73,15 @@ input[type=submit]:hover {
 <center><h2>Extension Form</h2></center>
 
 <div class="container">
-  <form action="{{route('extension-store')}}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('update-extension', $extension->id) }}" method="post" enctype="multipart/form-data">
     @csrf
+
     <div class="row">
       <div class="col-25">
         <label for="fname">Extension Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="fname" name="name" placeholder="Enter Your Extension Name">
+        <input type="text" id="fname" name="name" value="{{ $extension->name }}" placeholder="Enter Your Extension Name">
       </div>
     </div>
 
@@ -90,6 +91,10 @@ input[type=submit]:hover {
       </div>
       <div class="col-75">
         <input type="file" id="lname" name="image">
+        @if($extension->image)
+          <br>
+          <img src="{{ asset('images/'.$extension->image) }}" alt="Extension Image" width="150">
+        @endif
       </div>
     </div>
 
@@ -98,7 +103,7 @@ input[type=submit]:hover {
         <label for="price">Extension Price</label>
       </div>
       <div class="col-75">
-        <input type="text" id="price" name="price" placeholder="Enter Extension Price">
+        <input type="text" id="price" name="price" value="{{ $extension->price }}" placeholder="Enter Extension Price">
       </div>
     </div>
 
@@ -107,12 +112,12 @@ input[type=submit]:hover {
         <label for="subject">Extension Description</label>
       </div>
       <div class="col-75">
-        <textarea id="subject" name="description" placeholder="Write something.." style="height:200px"></textarea>
+        <textarea id="subject" name="description" placeholder="Write something.." style="height:200px">{{ $extension->description }}</textarea>
       </div>
     </div>
 
     <div class="row">
-      <input type="submit">
+      <input type="submit" value="Update">
     </div>
 
     <!-- Display Validation Errors -->

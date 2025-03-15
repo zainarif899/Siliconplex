@@ -36,16 +36,17 @@
     <th>Extension name</th>
     <th>Extension description</th>
     <th>Extension image</th>
+    <th>Active</th>
 
   </tr>
   <tr>
-    @foreach ($Extension as $extensions)
+    @foreach ($extension as $extensions)
         
     <td>{{$extensions->id}}</td>
     <td>{{$extensions->name}}</td>
     <td>{{$extensions->description}}</td>
     <td><img src="{{ asset('images/'.$extensions->image) }}" alt="Extension Image" width="100" height="100"></td>
-    {{-- <td><a href="{{route('category-show',$showcategory->id)}}">Show</a></td> --}}
+    <td><a href="{{route('extension-show',$extensions->id)}}">Show</a>--<a href="{{route('extension-edit',$extensions->id)}}">Edite</a>--<a href="{{route('extension-delete',$extensions->id)}}">Delete</a></td>
   </tr>
   {{-- --<a href="{{route('service-delete',$showservie->id)}}">Deleted</a>-- <a href="{{route('service-edit',$showservie->id)}}">Edite</a> --}}
   @endforeach

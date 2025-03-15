@@ -15,7 +15,8 @@ class Extension extends Model
     protected $fillable = [
         'name',
         'description',
-        'image'
+        'image',
+        'price'
     ];
 
     public function ratings()

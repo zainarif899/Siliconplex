@@ -133,8 +133,8 @@
             <h2>{{ $shows->name }}</h2>
             <p>{{$shows->description}}</p>
             <div class="rating-review">
-                <h3>Rating: 4.5/5</h3>
-                <p>Reviews: 100+</p>
+                <h3>Rating: {{ number_format($averageRating, 1) }}/5</h3>
+                <p>Reviews: {{ $reviews->count() }}</p>
             </div>
             <div class="price">
                 <h3>Price: $100</h3>
@@ -145,6 +145,10 @@
             <a href="{{route('rating-pages', $shows->id)}}">Review</a>
         </div>
     </div>
+
+
+
+    
    
         
     <div class="reviews">
