@@ -63,3 +63,4 @@ Route::get('extension/delete/{id}',[ExtensionController::class,'delete'])->name(
 
 Route::get('rating/pages/{id}',[RatingController::class,'rating_page'])->name('rating-pages');
 Route::post('rating/store',[RatingController::class,'rating_create'])->name('rating-store');
+Route::get('searching', [ExtensionController::class, 'search'])->name('searching');

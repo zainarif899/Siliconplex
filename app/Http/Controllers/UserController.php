@@ -15,9 +15,6 @@ class UserController extends Controller
     }
     function signup(Request $request)
     {
-        // $father = json_decode($request->input('posts', '[{"first_name":"Arif"},{"last_name":"hanif"}]'));
-        // $phones = json_decode($request->input('phones', '["03421126921","03532219871"]'), true);
-        // dd($father,$phones, $input);
         $input = $request->all();
 
         $input['password'] = bcrypt($input['password']);
@@ -60,13 +57,7 @@ class UserController extends Controller
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');
         }
-        // $valiation = $request->validate();
-        // $login = User::where('email',$request->input('email'))->first();
-        // if(!$login || !hash::check($request->input('password'),$login->password)){
-        //     return response()->json(['error'=>'invalid email or password']);
-        // }
 
-        // return view('Extension.create');
     }
 
     public function logout(Request $request)

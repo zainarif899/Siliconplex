@@ -7,6 +7,8 @@ use App\Http\Requests\ExtensionRequest;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\error;
+
 class ExtensionController extends Controller
 {
     public function index()
@@ -30,8 +32,8 @@ class ExtensionController extends Controller
         $Extension = Extension::create([
             'name' => $request->name,
             'description' => $request->description,
+            'price' => $request->price,
             'image' => $imageName,
-            'price' => $request->price
         ]);
         // dd($Extension);
         return redirect(route('extension-index'));
@@ -84,13 +86,17 @@ class ExtensionController extends Controller
             echo "the extension not deleted";
         }
     }
-    // public function review_show($id){
-    //     $review = Rating::where('ext_id', $id)->get(); 
-    //     $shows = Extension::findOrFail($id);
-    //     return view('Extension.extensionpage', compact('review', 'shows'));
-    // }
 
-
-
+    public function search(Request $request){
+        $name = $request->query('name'); 
+        $search = Extension::where('name', 'LIKE', "%$name%")->get();
+        
+        if ($search->isNotEmpty()) {
+            return redirect()->route('extension-show',  compact('extension'));
+        } else {
+            return response()->json(['message' => 'No results found'], 404);
+        }
+    }
+    
 
 }

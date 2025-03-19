@@ -20,20 +20,7 @@ class RatingController extends Controller
             return redirect()->route('login-page')->with('error', 'You must be logged in to submit a rating.');
         }
 
-
         $validation = $request->validated();
-        // $ext_id = Rating::with('extension')->get();
-        // dd($ext_id);
-        // $ext_id = Extension::find($id)->ext_id;
-        // // dd($ext_id);
-        // if (!$ext_id) {
-        //     return response()->json([
-        //         'fails' => true,
-        //         'msg' => "Extension not found"
-        //     ], 404);
-        // }
-
-
         $user_id = Auth::id();
 
         //   dd($user_id);
@@ -54,12 +41,6 @@ class RatingController extends Controller
             ], 500);
         }
     }
-
-    // public function rating_get($id)
-    // {
-    //     $rating = Extension::findOrfail($id); 
-    //     return view('Extension.extensionpage',compact('rating'));
-    // }
 
     public function rating_page($id)
     {

@@ -28,4 +28,8 @@ class ExtensionRequest extends FormRequest
             'price'=>'required'
         ];
     }
+
+    public function setSlugAttribute(){
+        $this->attributes['slug'] = str_slug($this->name  , "-");
+    }
 }

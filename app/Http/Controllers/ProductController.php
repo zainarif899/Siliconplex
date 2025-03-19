@@ -28,11 +28,24 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request){
         $validation = $request->validated();
+        $imageName = time() . '.' . request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $imageName);
+        // dd($imageName);
+        // dd($request);
         $product = Product::create([
             'name'=>$request->name,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'image'=>$request->imageName,
             'cat_id'=>$request->cat_id,
         ]);
-        return view('product.show',compact('product'));
+        dd($product);
+        if($product){
+            return "The Product successfull";
+        }else{
+            return "The product not add successfull";
+        }
+        // return view('product.show',compact('product'));
     }
 
     // public function productpage(){

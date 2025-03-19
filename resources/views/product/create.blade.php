@@ -3,7 +3,7 @@
 <style>
     input[type=text],
     select {
-        width: 100%;
+        width: 109vh;
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
@@ -30,7 +30,7 @@
     div {
         border-radius: 5px;
         background-color: #f2f2f2;
-        padding: 20px;
+        padding: 4px;
     }
 </style>
 
@@ -43,8 +43,45 @@
     <div>
         <form action="{{ route('product-store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <label for="fname">Product Name</label>
-            <input type="text" id="fname" name="name" placeholder="Product name..">
+
+
+            <div class="row">
+                <div class="col-25">
+                  <label for="fname">Product Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="fname" name="name" placeholder="Enter Your Extension Name">
+                </div>
+              </div>
+
+
+            <div class="row">
+                <div class="col-25">
+                  <label for="subject">Product Description</label>
+                </div>
+                <div class="col-75">
+                  <textarea id="subject" name="description" placeholder="Write something.." style="height:200px; width: 109vh;"></textarea>
+                </div>
+              </div>
+
+
+            <div class="row">
+                <div class="col-25">
+                  <label for="price">Product Price</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="price" name="price" placeholder="Enter Extension Price">
+                </div>
+              </div>
+
+            <div class="row">
+                <div class="col-25">
+                  <label for="lname">Product Image</label>
+                </div>
+                <div class="col-75">
+                  <input type="file" id="lname" name="image">
+                </div>
+              </div>
             <label for="cars">Choose a Category:</label>
 
             <select name="cat_id" id="cars">

@@ -1,130 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Professional Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
 
-/* Style the header */
-.header {
-  padding: 80px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-}
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Increase the font size of the h1 element */
-.header h1 {
-  font-size: 40px;
-}
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
 
-/* Style the top navigation bar */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-}
+        .navbar a:hover {
+            background-color: #1abc9c;
+            border-radius: 5px;
+        }
 
-/* Style the navigation bar links */
-.navbar a {
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-}
+        .search-container {
+            display: flex;
+        }
 
-/* Right-aligned link */
-.navbar a.right {
-  float: right;
-}
+        .search-container input {
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+        }
 
-/* Change color on hover */
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
+        .search-container button {
+            background-color: #1abc9c;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
 
-/* Column container */
-.row {  
-  display: flex;
-  flex-wrap: wrap;
-}
+        .header {
+            text-align: center;
+            padding: 50px;
+            background: #1abc9c;
+            color: white;
+        }
 
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.side {
-  flex: 30%;
-  background-color: #f1f1f1;
-  padding: 20px;
-}
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
 
-/* Main column */
-.main {   
-  flex: 70%;
-  background-color: white;
-  padding: 20px;
-}
+        .sidebar {
+            width: 30%;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
 
-/* Fake image, just for this example */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
-</style>
+        .content {
+            width: 70%;
+            background: white;
+            padding: 20px;
+            margin-left: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fakeimg {
+            background: #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .content {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <div class="navbar">
-      <a href="{{route('service-index')}}">Service</a>
-      <a href="{{route('product-index')}}">product</a>
-      <a href="{{route('category-index')}}">Category</a>
-      {{-- <a href="{{route('rating-pages')}}">rating</a> --}}
-    
-      <a href="{{route('logout')}}" class="right">logout</a>
+        <div>
+            <a href="#">Service</a>
+            <a href="#">Product</a>
+            <a href="#">Category</a>
+        </div>
+        <form action="{{ route('searching') }}" method="get">
+            <div class="search-container">
+                <input type="text" placeholder="Search.." name="name">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+
+        <a href="#">Logout</a>
     </div>
-<div class="header">
-  <h1>My Website</h1>
-  <p>A website created by me.</p>
-</div>
 
+    <div class="header">
+        <h1>My Professional Website</h1>
+        <p>A refined and modern website layout.</p>
+    </div>
 
-<div class="row">
-  <div class="side">
-    <h2>About Me</h2>
-    <h5>Photo of me:</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-    <h3>More Text</h3>
-    <p>Lorem ipsum dolor sit ame.</p>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div>
-  </div>
-  <div class="main">
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Dec 7, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    <br>
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Sep 2, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-  </div>
-</div>
+    <div class="container">
+        <div class="sidebar">
+            <h2>About Me</h2>
+            <div class="fakeimg" style="height:200px;">Profile Image</div>
+            <p>Brief introduction about yourself.</p>
+        </div>
+
+        <div class="content">
+            <h2>Title Heading</h2>
+            <p><small>December 7, 2022</small></p>
+            <div class="fakeimg" style="height:200px;">Image</div>
+            <p>Some informative content goes here.</p>
+        </div>
+    </div>
 
 </body>
+
 </html>
