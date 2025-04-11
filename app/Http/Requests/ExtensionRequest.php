@@ -29,7 +29,9 @@ class ExtensionRequest extends FormRequest
         ];
     }
 
-    public function setSlugAttribute(){
-        $this->attributes['slug'] = str_slug($this->name  , "-");
-    }
+    // public function setSlugAttribute(){
+    //     $this->attributes['slug'] = str_slug($this->name  , "-");
+    // }
+
+    
 }

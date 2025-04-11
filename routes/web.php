@@ -64,3 +64,5 @@ Route::get('extension/delete/{id}',[ExtensionController::class,'delete'])->name(
 Route::get('rating/pages/{id}',[RatingController::class,'rating_page'])->name('rating-pages');
 Route::post('rating/store',[RatingController::class,'rating_create'])->name('rating-store');
 Route::get('searching', [ExtensionController::class, 'search'])->name('searching');
+Route::get('autocomplete', [ExtensionController::class, 'autocomplete'])->name('autocomplete');
+// Route::get('searchbox',[ExtensionController::class,'search_box'])->name('searchbox');

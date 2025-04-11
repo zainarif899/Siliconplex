@@ -6,6 +6,7 @@ use App\Models\Extension;
 use App\Http\Requests\ExtensionRequest;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 use function Laravel\Prompts\error;
 
@@ -78,25 +79,41 @@ class ExtensionController extends Controller
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $delete = Extension::findOrfail($id);
-        if($delete->delete()){
+        if ($delete->delete()) {
             return redirect(route('extension-index'));
-        }else{
+        } else {
             echo "the extension not deleted";
         }
     }
 
-    public function search(Request $request){
-        $name = $request->query('name'); 
-        $search = Extension::where('name', 'LIKE', "%$name%")->get();
-        
-        if ($search->isNotEmpty()) {
-            return redirect()->route('extension-show',  compact('extension'));
+    public function search(Request $request)
+    {
+        $name = $request->query('name');
+        $search = Extension::where('name', 'LIKE', "%$name%")->first();
+        // dd($search);
+        if ($search) {
+            return redirect()->route('extension-show', ['id' => $search->id]);
         } else {
             return response()->json(['message' => 'No results found'], 404);
         }
     }
-    
 
+    // public function search_box(){
+    //     $searchbox = Extension::paginate(10);
+    //     dd($searchbox);
+    //     return view('home',compact('searchbox'));
+    // }
+
+    public function autocomplete(Request $request)
+    {
+        $query = $request->get('query'); // User ka input
+
+        $results = Extension::where('name', 'LIKE', "%{$query}%")
+            ->pluck('name'); // Sirf names chahiye
+
+        return response()->json($results);
+    }
 }

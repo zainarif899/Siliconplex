@@ -121,8 +121,9 @@
         </div>
         <form action="{{ route('searching') }}" method="get">
             <div class="search-container">
-                <input type="text" placeholder="Search.." name="name">
+                <input type="text" placeholder="Search.." name="name" id="search" list="suggestions">
                 <button type="submit"><i class="fa fa-search"></i></button>
+                <datalist id="suggestions"></datalist>
             </div>
         </form>
 
@@ -150,5 +151,27 @@
     </div>
 
 </body>
+
+<script>
+    document.getElementById('search').addEventListener('input', function () {
+        let query = this.value;
+
+        if (query.length < 1) return; // Empty input par request na bheje
+
+        fetch(`/autocomplete?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                let dataList = document.getElementById('suggestions');
+                dataList.innerHTML = ""; // Pehle ke suggestions hatao
+
+                data.forEach(item => {
+                    let option = document.createElement('option');
+                    option.value = item;
+                    dataList.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching suggestions:', error));
+    });
+</script>
 
 </html>
